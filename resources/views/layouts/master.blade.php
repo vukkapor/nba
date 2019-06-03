@@ -11,6 +11,7 @@
     @endif
 <div class="blog-header">
     <div class="container">
+        <a href="/">Home</a>
             @if (Auth::check())
                 <p>
                     Welcome, {{Auth()->user()->name}}

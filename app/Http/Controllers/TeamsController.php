@@ -18,7 +18,7 @@ class TeamsController extends Controller
 
     public function show($id)
     {
-        $team = Team::with("players")->findOrFail($id);
+        $team = Team::with("players", "comments")->findOrFail($id);
 
         return view("teams.show", compact("team"));
     }
