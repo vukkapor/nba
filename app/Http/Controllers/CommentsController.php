@@ -17,14 +17,14 @@ class CommentsController extends Controller
         $this->validate(request(), Comment::STORE_RULES);
 
         $team->comments()->create(request()->all());
-
+/*
         $comment = new Comment;
 
         $comment->content = request('content');
         $comment->team_id = $teamId;
         $comment->user_id = auth()->user()->id;
 
-        $comment->save();
+        $comment->save(); */
         return redirect()->route('single-team', ['team_id' => $teamId]);
     }
 }

@@ -4,7 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 
-class checkSwearing
+class CheckSwearing
 {
     /**
      * Handle an incoming request.
@@ -15,13 +15,14 @@ class checkSwearing
      */
     public function handle($request, Closure $next)
     {
-        $swear = $request->get("content");
+        $content = $request->get("content");
         $swearWords = ['hate', 'idiot', 'stupid'];
         foreach($swearWords as $word){
-            if (strpos($swear, $word) !== false) {
+            if (strpos($content, $word) !== false) {
                 return response(view("comments.forbidden-comment"));
             }
         }
+
         return $next($request);
     }
 }
