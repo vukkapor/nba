@@ -34,10 +34,9 @@ class RegisterController extends Controller
         }
 
         $user->save();
-        auth()->login($user);
 
         session()->flash("message", "Registrovan");
 
-        return redirect()->route("all-teams");
+        return redirect()->route("login");
     }
 }
