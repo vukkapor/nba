@@ -12,4 +12,14 @@
             <li><a href="/players/{{$player->id}}">{{$player->first_name}} {{$player->last_name}}</a> <br> {{$player->email}}</li>
         @endforeach
     </ul>
+    <hr>
+    Comments
+    <hr>
+    <ul>
+        @foreach ($team->comments as $comment)
+            <li>
+                <p>{{ $comment->content }}</p>
+            </li>
+        @endforeach
+    </ul>
 @endsection
