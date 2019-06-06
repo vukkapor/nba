@@ -15,6 +15,7 @@ class User extends Authenticatable implements MustVerifyEmail
         "password" => "required|min:6",
         "password_confirmation" => "required|min:6"
     ];
+
     /**
      * The attributes that are mass assignable.
      *
@@ -45,5 +46,10 @@ class User extends Authenticatable implements MustVerifyEmail
     public function comments()
     {
         return $this->hasMany(Comment::class);
+    }
+
+    public function news()
+    {
+        return $this->hasMany(News::class);
     }
 }

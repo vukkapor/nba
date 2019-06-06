@@ -54,13 +54,13 @@ class RegisterController extends Controller
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
     }
-/*
+
     /**
      * Create a new user instance after a valid registration.
      *
      * @param  array  $data
      * @return \App\User
-
+    */
     protected function create(array $data)
     {
         return User::create([
@@ -68,12 +68,10 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
-    } */
 
-    public function create()
-    {
         return view("auth.register");
     }
+
 
     public function store()
     {
