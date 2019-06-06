@@ -15,7 +15,7 @@ class NewsController extends Controller
 
     public function index()
     {
-        $news=News::paginate(15);
+        $news=News::latest()->paginate(15);
         return view('news.index', compact('news'));
     }
 
@@ -33,5 +33,27 @@ class NewsController extends Controller
         \Log::info($news);
 
         return view('news.teams', compact('news'));
+    }
+
+    public function create()
+    {
+        $teams = Team::all();
+
+        return view('news.create', compact('teams'));
+    }
+
+    public function store()
+    {
+        $news = new News;
+
+        $news->title = request("title");
+        $news->content = request("content");
+        $news->user_id = auth()->user()->id;
+
+        $news->save();
+
+        $news->teams()->attach(request('teams'));
+        session()->flash("message", "Thank you for publishing article on www.nba.com");
+        return redirect()->route('news');
     }
 }

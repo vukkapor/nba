@@ -12,6 +12,8 @@
 <div class="blog-header">
     <div class="container">
         <a href="/">Home</a>
+        <a href="/news">News</a>
+        <a href="/news/create">News create</a>
             @if (Auth::check())
                 <p>
                     Welcome, {{Auth()->user()->name}}
