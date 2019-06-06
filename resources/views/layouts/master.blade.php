@@ -41,7 +41,7 @@
                 @yield('content')
             </div>
             <div class="col-sm-3 offset-sm-1 blog-sidebar">
-                @include('partials.sidebar')
+                @yield('sidebar')
             </div>
         </div>
     </div>

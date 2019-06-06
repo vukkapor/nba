@@ -12,3 +12,12 @@
 
     <p>Author: {{ $news->users->name }}</p>
 @endsection
+
+@section('sidebar')
+<div class="sidebar-module sidebar-module-inset">
+
+    @foreach ($news->teams as $team)
+    <p><a href="{{ route('single-team-news', ['teamName' => $team->name]) }}">{{ $team->name }}</a></p>
+    @endforeach
+
+@endsection
