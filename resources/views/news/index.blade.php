@@ -5,9 +5,11 @@
 
 @section('content')
     <ul>
-        @foreach ($news as $news)
-            <h2 class="blog-post-title"><a href="{{ route('single-news', ['id' => $news->id]) }}">{{ $news->title }}</a></h2>
-            <p>User who posted the news: </p> <a href=""></a>
+        @foreach ($news as $singleNews)
+            <h2 class="blog-post-title"><a href="{{ route('single-news', ['id' => $singleNews->id]) }}">{{ $singleNews->title }}</a></h2>
+            <p>User who posted the news: {{ $singleNews->user->name }}</p>
         @endforeach
     </ul>
+
+    {{ $news->links() }}
 @endsection

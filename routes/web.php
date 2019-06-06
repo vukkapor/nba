@@ -36,9 +36,6 @@ Route::post('/teams/{teamId}/comments', ['as' => 'comments-team', 'uses' => 'Com
 Auth::routes(['verify' => true]);
 
 //News
-Route::get('news/', 'NewsController@index')->name('news');
-Route::get('news/{id}', 'NewsController@show')->name('single-news');
+Route::get('/news', 'NewsController@index')->name('news');
+Route::get('/news/{id}', 'NewsController@show')->name('single-news');
 
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
