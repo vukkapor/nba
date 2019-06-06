@@ -33,7 +33,8 @@ class RegisterController extends Controller
             return redirect()->route("register");
         }
 
-        $user->save();
+
+        //$user->save();
 
         session()->flash("message", "Registrovan");
 

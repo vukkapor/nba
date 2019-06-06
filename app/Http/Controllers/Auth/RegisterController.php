@@ -28,18 +28,18 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/login';
 
     /**
      * Create a new controller instance.
      *
      * @return void
      */
+
     public function __construct()
     {
-        $this->middleware('guest');
+        $this->middleware("guest");
     }
-
     /**
      * Get a validator for an incoming registration request.
      *
@@ -54,13 +54,13 @@ class RegisterController extends Controller
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
     }
-
+/*
     /**
      * Create a new user instance after a valid registration.
      *
      * @param  array  $data
      * @return \App\User
-     */
+
     protected function create(array $data)
     {
         return User::create([
@@ -68,5 +68,34 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
+    } */
+
+    public function create()
+    {
+        return view("auth.register");
+    }
+
+    public function store()
+    {
+        $this->validate(request(), User::STORE_RULES);
+
+        $user = new User;
+
+        $user->name = request("name");
+        $user->email = request("email");
+        $user->password = bcrypt(request("password"));
+
+        if(request("password")!=request("password_confirmation"))
+        {
+            session()->flash("message", "Nisu ista dva passworda");
+            return redirect()->route("register");
+        }
+
+
+        //$user->save();
+
+        session()->flash("message", "Registrovan");
+
+        return redirect()->route("login");
     }
 }

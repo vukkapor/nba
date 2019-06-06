@@ -32,3 +32,4 @@ Route::get("/logout", "LoginController@destroy");
 //Comments
 Route::post('/teams/{teamId}/comments', ['as' => 'comments-team', 'uses' => 'CommentsController@store'])->middleware("swear");
 
+Auth::routes(['verify' => true]);
