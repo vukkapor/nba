@@ -38,4 +38,5 @@ Auth::routes(['verify' => true]);
 //News
 Route::get('/news', 'NewsController@index')->name('news');
 Route::get('/news/{id}', 'NewsController@show')->name('single-news');
+Route::get('/news/teams/{teamName}', 'NewsController@showTeam')->name('single-team-news');
 

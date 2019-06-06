@@ -10,5 +10,5 @@
 
     <hr>
 
-    <p>Author: {{ $news->user->name }}</p>
+    <p>Author: {{ $news->users->name }}</p>
 @endsection

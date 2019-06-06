@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\News;
+use App\Team;
 
 class NewsController extends Controller
 {
@@ -23,5 +24,14 @@ class NewsController extends Controller
         $news= News::findOrFail($id);
 
         return view('news.show', compact('news'));
+    }
+
+    public function showTeam($teamName)
+    {
+        $team = Team::without('players', 'comments')->where('name', $teamName)->first();
+        $news = $team->news()->paginate(10);
+        \Log::info($news);
+
+        return view('news.teams', compact('news'));
     }
 }

@@ -6,8 +6,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class News extends Model
 {
-    public function user()
+    public function users()
     {
         return $this->belongsTo(User::class, 'user_id');
     }
+
+    public function teams()
+    {
+        return $this->belongsToMany(Team::class);
+    }
+
 }
